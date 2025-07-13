@@ -1,0 +1,20 @@
+# Bun
+bun.lockb
+
+# Node modules
+node_modules/
+
+# Prisma
+.prisma/
+.env
+.env.*
+
+# Generated
+src/generated/
+dist/
+
+# OS / IDE
+.DS_Store
+*.log
+.vscode/
+.idea/
