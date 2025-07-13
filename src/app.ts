@@ -1,8 +1,8 @@
 import { Elysia } from 'elysia'
-import { webhookPlugin } from './ui/plugins/webhook.plugin'
+import { whatsappIncomingPlugin } from './ui/plugins/whatsapp-incoming.plugin'
 
 const app = new Elysia()
-  .use(webhookPlugin)
+  .use(whatsappIncomingPlugin)
   .listen(3001)
 
 console.log('🚀 Webhook escuchando en http://localhost:3001/webhook')

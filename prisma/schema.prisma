@@ -1,34 +1,41 @@
-generator client {
-  provider = "prisma-client-js"
-}
+model Chat {
+  id         String     @id @default(cuid())
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
 
-
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-
-enum MessageType {
-  TEXT
-  SYSTEM
-  IMAGE
-}
-
-model ChatRoom {
-  id        String     @id @default(cuid())
-  name      String?
-  messages  Message[]
-  createdAt DateTime   @default(now())
-  deletedAt DateTime?
+  messages   Message[]
+  participants Participant[]
 }
 
 model Message {
-  id        String     @id @default(cuid())
-  from      String
-  content   String
-  type      MessageType @default(TEXT)
-  chatId    String
-  chat      ChatRoom   @relation(fields: [chatId], references: [id])
-  createdAt DateTime   @default(now())
-  deletedAt DateTime?
+  id         String     @id @default(cuid())
+  chatId     String
+  authorId   String?
+  content    String
+  createdAt  DateTime   @default(now())
+
+  chat       Chat       @relation(fields: [chatId], references: [id])
+  author     Participant? @relation(fields: [authorId], references: [id])
+  channelMessages ChannelMessage[]
+}
+
+model Participant {
+  id         String     @id @default(cuid())
+  chatId     String
+  name       String?
+  externalId String?    // Número de WhatsApp, ID de Telegram, etc.
+  source     String?    // "whatsapp", "telegram", "ui", etc.
+
+  chat       Chat       @relation(fields: [chatId], references: [id])
+  messages   Message[]  @relation("MessageAuthor")
+}
+
+model ChannelMessage {
+  id         String     @id @default(cuid())
+  messageId  String
+  provider   String     // "whatsapp", "telegram", "ui"
+  rawPayload Json
+  createdAt  DateTime   @default(now())
+
+  message    Message    @relation(fields: [messageId], references: [id])
 }

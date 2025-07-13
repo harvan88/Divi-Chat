@@ -32,3 +32,6 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 
 # Finder (MacOS) folder config
 .DS_Store
+echo ".vscode/" >> .gitignore
+echo "ngrok.exe" >> .gitignore
+echo "ngrok_recovery_codes (1).txt" >> .gitignore
