@@ -1,5 +1,5 @@
 import { t, Elysia } from 'elysia'
-import type { WhatsAppWebhookPayload } from '@/types/whatsapp.webhook-payload'
+import type { WhatsAppWebhookPayload } from '@/domain/types/whatsapp.webhook-payload'
 
 export const whatsappIncomingPlugin = new Elysia({ prefix: '/webhook' })
   // Verificación del webhook de Meta

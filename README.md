@@ -34,7 +34,7 @@ Punto de entrada real del servidor Elysia. Inicializa los plugins y comienza a e
 
 #### `src/core/chat/`
 
-* `chat.service.ts`: servicio central que manejará la lógica de mensajes del sistema de chat (por construir). Ya solicitado con logs y comentarios relevantes.
+* `chat.service.ts`: servicio central que maneja la lógica de mensajes del sistema de chat. El servicio ya está implementado, gestiona el almacenamiento de mensajes y cuenta con logs y comentarios relevantes.
 
 #### `src/domain/`
 

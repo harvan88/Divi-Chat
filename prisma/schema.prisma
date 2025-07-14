@@ -1,41 +1,47 @@
-model Chat {
-  id         String     @id @default(cuid())
-  createdAt  DateTime   @default(now())
-  updatedAt  DateTime   @updatedAt
+generator client {
+  provider = "prisma-client-js"
+}
 
-  messages   Message[]
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Chat {
+  id           String        @id @default(cuid())
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  messages     Message[]
   participants Participant[]
 }
 
 model Message {
-  id         String     @id @default(cuid())
-  chatId     String
-  authorId   String?
-  content    String
-  createdAt  DateTime   @default(now())
-
-  chat       Chat       @relation(fields: [chatId], references: [id])
-  author     Participant? @relation(fields: [authorId], references: [id])
+  id              String           @id @default(cuid())
+  chatId          String
+  chat            Chat             @relation(fields: [chatId], references: [id])
+  authorId        String?
+  author          Participant?     @relation("MessageAuthor", fields: [authorId], references: [id])
+  toId            String?
+  to              Participant?     @relation("MessageRecipient", fields: [toId], references: [id])
+  content         String
+  createdAt       DateTime         @default(now())
   channelMessages ChannelMessage[]
 }
 
 model Participant {
-  id         String     @id @default(cuid())
-  chatId     String
-  name       String?
-  externalId String?    // Número de WhatsApp, ID de Telegram, etc.
-  source     String?    // "whatsapp", "telegram", "ui", etc.
-
-  chat       Chat       @relation(fields: [chatId], references: [id])
-  messages   Message[]  @relation("MessageAuthor")
+  id       String    @id @default(cuid())
+  chatId   String
+  chat     Chat      @relation(fields: [chatId], references: [id])
+  messages Message[] @relation("MessageAuthor")
+  received Message[] @relation("MessageRecipient")
 }
 
 model ChannelMessage {
-  id         String     @id @default(cuid())
+  id         String   @id @default(cuid())
   messageId  String
-  provider   String     // "whatsapp", "telegram", "ui"
+  provider   String
   rawPayload Json
-  createdAt  DateTime   @default(now())
+  createdAt  DateTime @default(now())
 
-  message    Message    @relation(fields: [messageId], references: [id])
+  message Message @relation(fields: [messageId], references: [id])
 }
