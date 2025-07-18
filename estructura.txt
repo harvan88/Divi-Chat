@@ -3,16 +3,16 @@
   ├── settings.json
 ├── bun.lock
 ├── docs
+  ├── ARCHITECTURE.md
+  ├── CHAT_FLOW.md
+  ├── Errores_prisma_y_tipos.md
+  ├── MODULES.md
+  ├── WEBHOOKS.md
 ├── index.ts
 ├── ngrok.exe
-├── ngrok_recovery_codes (1).txt
 ├── package.json
 ├── prisma
   ├── .gitignore
-  ├── migrations
-    ├── 20250713144121_init
-      ├── migration.sql
-    ├── migration_lock.toml
   ├── schema.prisma
 ├── README.md
 ├── scripts
@@ -23,12 +23,14 @@
   ├── app.ts
   ├── core
     ├── chat
+      ├── chat.service.test.ts
       ├── chat.service.ts
   ├── domain
     ├── entities
     ├── enums
     ├── logic
     ├── services
+      ├── message.service.test.ts
       ├── message.service.ts
     ├── types
       ├── whatsapp.webhook-payload.ts
@@ -58,6 +60,8 @@
       ├── schema.prisma
       ├── wasm.d.ts
       ├── wasm.js
+  ├── infra
+    ├── prisma.ts
   ├── lib
     ├── prisma.ts
   ├── shared
@@ -70,3 +74,4 @@
     ├── plugins
       ├── whatsapp-incoming.plugin.ts
 ├── tsconfig.json
+├── verify-prisma.ts
