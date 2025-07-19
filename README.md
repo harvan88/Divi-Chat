@@ -72,3 +72,16 @@ Te recomiendo crear una serie de documentos breves:
 | `/docs/CHAT_FLOW.md`    | Especificar cómo fluyen los mensajes dentro del sistema de chat (de entrada a persistencia y respuesta). |
 | `/docs/WEBHOOKS.md`     | Documentar los endpoints entrantes (ej: WhatsApp), cómo se estructuran los payloads y ejemplos.          |
 | `/docs/MODULES.md`      | Tabla de responsabilidades de cada módulo de `src/`.                                                     |
+
+---
+
+## 🚀 Puesta en marcha
+
+Instala las dependencias y arranca el servidor con:
+
+```bash
+bun install
+bun run src/app.ts
+```
+
+Luego accedé al webhook en `http://localhost:3001/webhook`.

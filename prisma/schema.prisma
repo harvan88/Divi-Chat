@@ -11,6 +11,7 @@ model Chat {
   id           String        @id @default(cuid())
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @updatedAt
+  responder    String?       // "human" (por defecto), "openai", "bot", etc.
   messages     Message[]
   participants Participant[]
 }
@@ -23,6 +24,7 @@ model Message {
   author          Participant?     @relation("MessageAuthor", fields: [authorId], references: [id])
   toId            String?
   to              Participant?     @relation("MessageRecipient", fields: [toId], references: [id])
+  responder String? // "human" (por defecto), "openai", "bot", etc.
   content         String
   createdAt       DateTime         @default(now())
   channelMessages ChannelMessage[]
@@ -32,9 +34,11 @@ model Participant {
   id       String    @id @default(cuid())
   chatId   String
   chat     Chat      @relation(fields: [chatId], references: [id])
+  phone    String    @unique
   messages Message[] @relation("MessageAuthor")
   received Message[] @relation("MessageRecipient")
 }
+
 
 model ChannelMessage {
   id         String   @id @default(cuid())

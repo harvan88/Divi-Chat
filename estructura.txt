@@ -1,7 +1,3 @@
-├── .gitignore
-├── .vscode
-  ├── settings.json
-├── bun.lock
 ├── docs
   ├── ARCHITECTURE.md
   ├── CHAT_FLOW.md
@@ -9,14 +5,16 @@
   ├── MODULES.md
   ├── WEBHOOKS.md
 ├── index.ts
-├── ngrok.exe
 ├── package.json
 ├── prisma
-  ├── .gitignore
+  ├── migrations
+    ├── 20250718023340_add_phone_to_participant
+      ├── migration.sql
+    ├── 20250719002248_add_responder_to_chat
+      ├── migration.sql
+    ├── migration_lock.toml
   ├── schema.prisma
 ├── README.md
-├── scripts
-  ├── estructura.ts
 ├── src
   ├── api
     ├── controllers
@@ -29,43 +27,21 @@
     ├── entities
     ├── enums
     ├── logic
+      ├── message-dispatcher.ts
+      ├── responder
+        ├── openai-responder.ts
     ├── services
       ├── message.service.test.ts
       ├── message.service.ts
     ├── types
       ├── whatsapp.webhook-payload.ts
-  ├── generated
-    ├── prisma
-      ├── client.d.ts
-      ├── client.js
-      ├── default.d.ts
-      ├── default.js
-      ├── edge.d.ts
-      ├── edge.js
-      ├── index-browser.js
-      ├── index.d.ts
-      ├── index.js
-      ├── package.json
-      ├── query_engine-windows.dll.node
-      ├── runtime
-        ├── edge-esm.js
-        ├── edge.js
-        ├── index-browser.d.ts
-        ├── index-browser.js
-        ├── library.d.ts
-        ├── library.js
-        ├── react-native.js
-        ├── wasm-compiler-edge.js
-        ├── wasm-engine-edge.js
-      ├── schema.prisma
-      ├── wasm.d.ts
-      ├── wasm.js
   ├── infra
     ├── prisma.ts
   ├── lib
     ├── prisma.ts
   ├── shared
     ├── types
+      ├── openai.ts
   ├── ui
     ├── components
       ├── molecules
@@ -73,5 +49,15 @@
       ├── pages
     ├── plugins
       ├── whatsapp-incoming.plugin.ts
+├── test
+  ├── env-check.ts
+  ├── http
+    ├── curl
+      ├── consultar-mensajes.ps1
+      ├── enviar-mensaje.ps1
+    ├── payloads
+      ├── mensaje-bot.json
+      ├── mensaje-prueba.json
+  ├── openai-test.ts
 ├── tsconfig.json
 ├── verify-prisma.ts

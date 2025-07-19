@@ -8,9 +8,20 @@ const IGNORADOS = [
   "dist",
   "build",
   "bun.lockb",
+  "bun.lockimport",
   ".env",
   ".env.local",
-  "estructura.txt"
+  ".gitignore",
+  "estructura.txt",
+  ".vscode",
+  "settings.json",
+  "ngrok.exe",
+  "generated",
+  "bun.lock",
+  "estructura_flattened.zip",
+  "estructura.txt",
+  "flattened",
+  "scripts"
 ];
 
 const INDENT = "  ";
