@@ -5,6 +5,7 @@
   ├── MODULES.md
   ├── WEBHOOKS.md
 ├── index.ts
+├── package-lock.json
 ├── package.json
 ├── prisma
   ├── migrations
@@ -14,6 +15,7 @@
       ├── migration.sql
     ├── migration_lock.toml
   ├── schema.prisma
+├── public
 ├── README.md
 ├── src
   ├── api
@@ -42,13 +44,36 @@
   ├── shared
     ├── types
       ├── openai.ts
+  ├── styes
+    ├── tailwind.css
   ├── ui
     ├── components
+      ├── atoms
+        ├── Button.tsx
+        ├── Icon.tsx
+        ├── Input.tsx
+        ├── Spinner.tsx
       ├── molecules
+        ├── MessageForm.tsx
+        ├── MessageItem.tsx
+        ├── MessageList.tsx
       ├── organisms
+        ├── ChatWindow.tsx
       ├── pages
+      ├── tokens
+        ├── colors.ts
+        ├── spacing.ts
+    ├── fragments
+      ├── render-chat-page.ts
+      ├── render-message-item.tsx
+      ├── render-message-list.tsx
+    ├── pages
+      ├── chat.page.tsx
     ├── plugins
-      ├── whatsapp-incoming.plugin.ts
+      ├── component-preview.plugin.tsx
+      ├── previewMap.generated.ts
+      ├── whatsapp-incoming.plugin.tsx
+    ├── styles
 ├── test
   ├── env-check.ts
   ├── http

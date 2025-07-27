@@ -1,37 +1,42 @@
 {
   "compilerOptions": {
-    // Environment setup & latest features
+    // 🚀 Configuración moderna
     "lib": ["ESNext"],
     "target": "ESNext",
     "module": "ESNext",
     "moduleDetection": "force",
-    "jsx": "react-jsx",
-    "allowJs": true,
 
-    // 🔧 Añadido para soportar "@/..."
+    // 🧠 JSX sin React, usando KITA para generar HTML como string
+    "jsx": "react-jsx",
+    "jsxImportSource": "@kitajs/html",
+    "plugins": [{ "name": "@kitajs/ts-html-plugin" }],
+    "types": ["@kitajs/html/htmx.d.ts"],
+
+    // 🛠️ Importaciones relativas más cómodas
     "baseUrl": "./src",
     "paths": {
       "@/*": ["./*"]
     },
 
-    // Bundler mode
+    // 🧱 Modo Bundler y ESM
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
+    "allowJs": true,
     "noEmit": true,
 
-    // Best practices
+    // ✅ Buenas prácticas
     "strict": true,
     "skipLibCheck": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
 
-    // Algunas flags menos estrictas
+    // 🔧 Flexible para desarrollo
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noPropertyAccessFromIndexSignature": false
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "scripts/generate-preview-map.ts"],
   "exclude": ["node_modules", "dist", "build", "test", "**/*.spec.ts"]
 }
